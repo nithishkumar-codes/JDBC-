@@ -1,0 +1,29 @@
+package jdbc_package;
+import java.sql.*;
+public class Jdbcdemo
+{
+	public static void main(String[] args) throws SQLException
+	{
+		
+		String url="jdbc:mysql://localhost:3306/jdbcdemo";
+		String userName="root";
+		String password="Nithish@2k";
+		String query="select * from employee";
+		
+		Connection com=DriverManager.getConnection(url, userName, password);
+		Statement st=com.createStatement();
+		ResultSet rs=st.executeQuery(query);
+		
+		
+		while(rs.next())//return boolean 
+		{
+		System.out.println(rs.getInt(1));
+		System.out.println(rs.getString(2));
+		System.out.println(rs.getInt(3));
+		System.out.println(" ");
+		}
+		com.close();
+		
+	}
+
+}
